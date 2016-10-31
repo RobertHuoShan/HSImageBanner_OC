@@ -53,7 +53,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator   = NO;
         _scrollView.delegate = self;
@@ -67,6 +67,14 @@
         _imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(IMAGEBANNER_WIDTH*0, 0, IMAGEBANNER_WIDTH, IMAGEBANNER_HEIGHT)];
         _imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(IMAGEBANNER_WIDTH*1, 0, IMAGEBANNER_WIDTH, IMAGEBANNER_HEIGHT)];
         _imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(IMAGEBANNER_WIDTH*2, 0, IMAGEBANNER_WIDTH, IMAGEBANNER_HEIGHT)];
+        
+        _imageView1.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView2.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView3.contentMode = UIViewContentModeScaleAspectFill;
+        
+        _imageView1.layer.masksToBounds = YES;
+        _imageView2.layer.masksToBounds = YES;
+        _imageView3.layer.masksToBounds = YES;
         
         [_scrollView addSubview:_imageView1];
         [_scrollView addSubview:_imageView2];
